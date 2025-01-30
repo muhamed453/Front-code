@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front Code | Contact Us</title>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        #name, #email {
+            margin-top: 2rem;
+            width: 20rem;
+            height: 3rem;
+            border-radius: 2rem;
+            padding: 0.5rem;
+        }
+        #message {
+            width: 20rem;
+            height: 6rem;
+            border-radius: 1rem;
+            padding: 0.5rem;
+        }
+        #btn {
+            margin-top: 2rem;
+            width: 20rem;
+            height: 3rem;
+            border-radius: 2rem;
+            font-size: 1.5rem;
+            color: white;
+            background: hsl(224,30%,27%);
+            border: none;
+            cursor: pointer;
+        }
+        #btn:hover {
+            background: hsl(224, 40%, 22%);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Front Code</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="contact">
+        <h1>Contact Us</h1>
+        <p>Tell us what type of website you need. Your input will help us create the perfect design for you.</p>
+
+        <!-- FORM -->
+        <form id="contact-form">
+            <input type="text" id="name" name="user_name" required placeholder="Your Name"><br><br>
+
+            <input type="email" id="email" name="user_email" required placeholder="Your Email"><br><br>
+
+            <textarea id="message" name="message" required placeholder="Your Message"></textarea><br><br>
+
+            <button id="btn" type="submit">Submit</button>
+        </form>
+
+        <p id="response-message" style="color: green; margin-top: 1rem;"></p>
+    </section>
+
+    <footer>
+            <a href="https://x.com/Frontcode01?s=35">
+                <div>
+            <img src="x-icon.jpeg" alt="Twitter icon" id="twit"/>
+                </div>
+        </a>
+        &copy; 2025 Front Code. All rights reserved.
+    </footer>
+
+    <!-- EmailJS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS with your User ID
+        (function() {
+            emailjs.init('YOUR_USER_ID'); // 🔹 Replace 'YOUR_USER_ID' with your actual EmailJS user ID
+        })();
+
+        // Handle form submission
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent page refresh
+
+            emailjs.sendForm('service_p82ns7s', 'template_zqec1rt', this) // 🔹 Replace with your actual Service ID & Template ID
+            .then(function(response) {
+                document.getElementById("response-message").innerText = "Message sent successfully!";
+                document.getElementById("contact-form").reset(); // Clear form after submission
+            }, function(error) {
+                document.getElementById("response-message").innerText = "Failed to send message. Please try again.";
+            });
+        });
+    </script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "YRnIbob6DmJtrb803",
+      });
+   })();
+</script>
+</body>
+</html>
